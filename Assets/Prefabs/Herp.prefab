@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 463102}
   - 212: {fileID: 21251026}
+  - 114: {fileID: 11405888}
   m_Layer: 0
   m_Name: Herp
   m_TagString: Untagged
@@ -24,10 +25,32 @@ Transform:
   m_GameObject: {fileID: 193364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .321874499, y: .321874499, z: .321874499}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11405888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575578558a7631042a01b97471312ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Visible: 1
+  Invisible: 0
+  TargetSprite: {fileID: 0}
+  Football: {fileID: 21300000, guid: 201d093613b84364e93a9a2ad65057c0, type: 3}
+  soccerBall: {fileID: 21300000, guid: bb5c9211a8c87f849a9c6f2d0a8f8abf, type: 3}
+  golfBall: {fileID: 21300000, guid: 675379d1d71492141acade49bfe2c3b2, type: 3}
+  Bow: {fileID: 21300000, guid: 4418f34e1c4e87a478227968d654dcdd, type: 3}
+  Basketball: {fileID: 21300000, guid: 56c9f66668b8504479cac4e67dd471b6, type: 3}
+  Volleyball: {fileID: 21300000, guid: 06142fce193fd7544b20bb0f26929fae, type: 3}
+  Nothing: {fileID: 21300000, guid: e32df825e98bae84f9c6d8935f3747ff, type: 3}
+  sportIcons: []
 --- !u!212 &21251026
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -52,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56c9f66668b8504479cac4e67dd471b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
