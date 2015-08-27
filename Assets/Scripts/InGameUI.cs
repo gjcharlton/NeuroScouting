@@ -9,6 +9,7 @@ public class InGameUI : MonoBehaviour {
 
 	public GameObject trialInputCanvas; 
 	public GameObject confirmationCanvas;
+	public GameObject winnerCanvas;
 
 	//All buttons that coincide with trial amount
     public Button One;
@@ -22,15 +23,28 @@ public class InGameUI : MonoBehaviour {
     public Button Nine;
 
     public Text confirmationText; // Text for the confirmation once the player has chosen the amount of trials
-
+	public Text winnerText;
 	void Update()
 	{
+		if (TargetController.Winner == true) 
+		{
+			winnerCanvas.SetActive(true);
+			winnerText.text = "You made a correct match!\n Your score for that match is: " + TargetController.Score;
+
+		}
+
 		//If the player has picked their amont of trials and then proceeds to press space, they will begin gameplay
 		if (confirmationCanvas.activeSelf == true && Input.GetKeyDown (KeyCode.Space)) 
 		{
 			confirmationCanvas.SetActive(false);
 			trialCountSelected = true;
 			Time.timeScale = 1;
+		}
+
+		if (winnerCanvas.activeSelf == true) 
+		{
+
+			Time.timeScale = 0;
 		}
 	}
 

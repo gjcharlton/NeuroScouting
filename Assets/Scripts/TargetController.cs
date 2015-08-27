@@ -4,18 +4,20 @@ using System.Collections.Generic;
 
 public class TargetController : MonoBehaviour {
 	
+	public static float Score;//Players score
+	public static bool Winner;
 
-	public bool Visible = true; //Used to communicate that the object is completely visible
-	public bool Invisible = false; //Used to communicate that the object is completely invisible
+	bool Visible = true; //Used to communicate that the object is completely visible
+	bool Invisible = false; //Used to communicate that the object is completely invisible
 
-	public bool isSwapping = false;
+	bool isSwapping = false;
 
 	public Sprite targetSprite; //This is the Icon the player will be matching
 	public Sprite Football, soccerBall, golfBall, Bow, Basketball, Volleyball, Nothing; //These are the icons that will be used interchangeable for matching purposes
 
 	public List<Sprite> sportIcons;//List of sports icons
-	public bool emptyList = false; 
-	public bool showTarget = true; //Used to determine when the target should be shown
+	bool emptyList = false; 
+	bool showTarget = true; //Used to determine when the target should be shown
 
 	void Awake()
 	{
@@ -42,6 +44,7 @@ public class TargetController : MonoBehaviour {
 	void Start () 
 	{
 		this.gameObject.GetComponent<SpriteRenderer> ().color = new Color (1.0f, 1.0f, 1.0f, 0.0f);
+		Score = 100.0f;
 	}
 
 	// Update is called once per frame
@@ -66,6 +69,7 @@ public class TargetController : MonoBehaviour {
 
 			if (this.gameObject.GetComponent<SpriteRenderer> ().color.a <= .01f && isSwapping == false) 
 			{	
+				Score = 100.0f;
 				isSwapping = true;
 
 				if(sportIcons.Count == 0)
@@ -80,9 +84,17 @@ public class TargetController : MonoBehaviour {
 				StartCoroutine ("SpriteSwapCoroutine");
 				
 			} 
-			else if (this.gameObject.GetComponent<SpriteRenderer> ().color.a >= .01f && isSwapping == true)
+			else if (this.gameObject.GetComponent<SpriteRenderer> ().color.a > .1f)
 			{
+
+				Score -= (18*Time.deltaTime);
+				Debug.Log((int)Score);
+
+				if(isSwapping == true)
+				{
 					isSwapping = false;
+				}
+
 			}
 		
 
@@ -101,15 +113,19 @@ public class TargetController : MonoBehaviour {
 			{
 				if (TargetChecker () == true) 
 				{
-					//run winner code
-					//Debug.Log ("You won!");
-					//	ResetTarget ();
+					Winner = true;
+					InGameUI.Trials--;
+					ResetTarget();
+					emptyList = false;
+					StartCoroutine ("SpriteSwapCoroutine");
 				} 
 				else 
 				{
-					//Debug.Log ("You Lost!");
-					//run loser code
-					//	ResetTarget ();
+					//Winner = false;
+					//InGameUI.Trials--;
+					//ResetTarget();
+					//emptyList = false;
+					//StartCoroutine ("SpriteSwapCoroutine");
 				}
 			}
 		
@@ -163,7 +179,7 @@ public class TargetController : MonoBehaviour {
 	//If the player still has trials left, the list will be reset, and a new target will be chosen
 	void ResetTarget()
 	{
-
+		//Winner = false;
 
 		sportIcons.Add (Football);
 		sportIcons.Add (soccerBall);
