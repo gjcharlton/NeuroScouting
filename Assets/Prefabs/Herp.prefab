@@ -42,7 +42,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Visible: 1
   Invisible: 0
-  TargetSprite: {fileID: 0}
+  isSwapping: 0
+  targetSprite: {fileID: 0}
   Football: {fileID: 21300000, guid: 201d093613b84364e93a9a2ad65057c0, type: 3}
   soccerBall: {fileID: 21300000, guid: bb5c9211a8c87f849a9c6f2d0a8f8abf, type: 3}
   golfBall: {fileID: 21300000, guid: 675379d1d71492141acade49bfe2c3b2, type: 3}
@@ -51,6 +52,9 @@ MonoBehaviour:
   Volleyball: {fileID: 21300000, guid: 06142fce193fd7544b20bb0f26929fae, type: 3}
   Nothing: {fileID: 21300000, guid: e32df825e98bae84f9c6d8935f3747ff, type: 3}
   sportIcons: []
+  emptyList: 0
+  showTarget: 1
+  swapCounter: 0
 --- !u!212 &21251026
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -76,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 56c9f66668b8504479cac4e67dd471b6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
