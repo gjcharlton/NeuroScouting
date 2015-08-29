@@ -15,17 +15,17 @@ public class TargetController : MonoBehaviour {
 	public Sprite Nothing; //This is what the target sprite will swap with if it is determined to be invisible this round
 	public Sprite Football, soccerBall, golfBall, Bow, Basketball, Volleyball; //These are the icons that will be used interchangeably for matching purposes
 
-	public bool Visible = true; //Used to communicate that the object is completely visible
-	public bool Invisible = false; //Used to communicate that the object is completely invisible
-	public bool hideTarget = false; //Determines whether this trial will hide the target
-	public bool isSwapping = false; //Determines whether or not the object has hit the point which it is swapping out sprites
-	public bool emptyList = false; //Determines if the list of sprites has become empty
-	public bool showTarget = true; //Used to make sure that a coroutine isn't called to swap the target sprite immediately since the object starts with an alpha of 0
-	public bool stopRoutine = false; //Used to stop coroutine from being called more than it should
-	public bool lastIcon = false;	
+	bool Visible = true; //Used to communicate that the object is completely visible
+	bool Invisible = false; //Used to communicate that the object is completely invisible
+	bool hideTarget = false; //Determines whether this trial will hide the target
+	bool isSwapping = false; //Determines whether or not the object has hit the point which it is swapping out sprites
+	bool emptyList = false; //Determines if the list of sprites has become empty
+	bool showTarget = true; //Used to make sure that a coroutine isn't called to swap the target sprite immediately since the object starts with an alpha of 0
+	bool stopRoutine = false; //Used to stop coroutine from being called more than it should
+	bool lastIcon = false;	
 
-	public int swapCounter = 0; //Keeps track of how many times a swpa has been made in a trial
-
+	int swapCounter = 0; //Keeps track of how many times a swpa has been made in a trial
+	int scoreDecreaseRate;
 	void Awake()
 	{
 		//Make sure the game doesn't start playing while picking trials. This essentially pauses the game temporarily.
@@ -69,6 +69,7 @@ public class TargetController : MonoBehaviour {
 		this.gameObject.GetComponent<SpriteRenderer> ().color = new Color (1.0f, 1.0f, 1.0f, 0.0f);
 
 		Score = 100.0f;
+		scoreDecreaseRate = 10;
 
 	}
 
@@ -123,7 +124,7 @@ public class TargetController : MonoBehaviour {
 			else if (this.gameObject.GetComponent<SpriteRenderer> ().color.a > .1f); //This entails that it is becoming visible again
 			{
 				//Subtract from the score because once the player can see it, and do not press space, they lose some of their score
-				Score -= (10*Time.deltaTime);
+				Score -= (scoreDecreaseRate * Time.deltaTime);
 
 				//Once the pbject hits its "max" visibility
 				if (this.gameObject.GetComponent<SpriteRenderer> ().color.a >= .99f) 
