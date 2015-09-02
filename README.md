@@ -2,7 +2,7 @@
 Adding Unity project to git repository
 
 Rules+++++++
--This is a matching game that tests a players hand eye coordination and scores based on such, assuming a correct match is made.
+-This is a matching game that tests a players reaction time, and scores based on such, assuming a correct match is made.
 -The player first selects how many trials they would like, (1-9).
 -The player is then prompted to begin and the target appears on screen for an allotted amount of time.
 -The target then disappears and it is up to the player to remember what the icone was
